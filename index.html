@@ -19,6 +19,7 @@ clear: both;
 #tweecool li img, .twitter-widget li .tweets_txt {
 float: left;
 margin-bottom: 10px;
+margin-left: 5px;
 }
 #tweecool li img {
 -webkit-border-radius: 30px;
@@ -47,19 +48,97 @@ padding: 0;
 
 #tweecool ul li{
 	margin: 10px 0;
-	background-color: #91ffff;
+	
 }
 
 #clockbox ul li{
-	background: url(images/phflag.png) no-repeat left top;
+	
 	background-size: 25% 100%;
 	padding: 0px 0px 0px 0px;
 	margin: 0 0;
-	color: white;
-	background-color: #08a4a7;
+	color: #5500FF;
+	
 }
+
 #clockbox h1{
 	margin-bottom: 0em;
+	margin-top: 0em;
+	font-size: 3.5em;
+}
+
+.marquee {
+    width: 450px;
+	height: 2em;
+    margin: 0 auto;
+    overflow: hidden;
+    white-space: nowrap;
+    box-sizing: border-box;
+    animation: marquee 50s linear infinite;
+}
+
+.marquee p{
+	font-size: 2em;
+}
+
+.marquee:hover {
+    animation-play-state: paused
+}
+
+/* Make it move */
+@keyframes marquee {
+    0%   { text-indent: 27.5em }
+    100% { text-indent: -105em }
+}
+
+/* Make it pretty */
+.microsoft {
+    padding-left: 1.5em;
+    position: relative;
+    font: 16px 'Segoe UI', Tahoma, Helvetica, Sans-Serif;
+}
+
+/* ::before was :before before ::before was ::before - kthx */
+.microsoft:before, .microsoft::before {
+    z-index: 2;
+    content: '';
+    position: absolute;
+    top: -1em; left: -1em;
+    width: 1em; height: 1em;
+    background-image: url('images/speaker.png');
+}
+
+.microsoft:after, .microsoft::after {
+    z-index: 1;
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 2em; height: 2em;
+    /*background-image: linear-gradient(90deg, white 70%, rgba(255,255,255,0));*/
+	background-image: url('images/speaker.png');
+	background-size: 100% 100%;
+}
+
+/* Style the links */
+.vanity {
+    color: #333;
+    text-align: center;
+    font: .75em 'Segoe UI', Tahoma, Helvetica, Sans-Serif;
+}
+
+.vanity a, .microsoft a {
+    color: #1570A6;
+    transition: color .5s;
+    text-decoration: none;
+}
+
+.vanity a:hover, .microsoft a:hover {
+    color: #F65314;
+}
+
+/* Style toggle button */
+.toggle {
+	display: block;
+    margin: 2em auto;
 }
   </style>
 
@@ -69,8 +148,9 @@ padding: 0;
 	<script src="js/tweecool.min.js"></script>
   <script>
 $(document).ready(function() {
-
+$.mobile.loading("show");
 $('#tweecool').tweecool({
+
 // Your twitter username
 username : 'dost_pagasa',
 
@@ -89,6 +169,8 @@ show_media : true,
 //values: small, large, thumb, medium 
 show_media_size: 'thumb'
 });
+
+$.mobile.loading("hide");
 });
 </script>
 <script>
@@ -111,7 +193,7 @@ if(nmin<=9) nmin="0"+nmin;
 if(nsec<=9) nsec="0"+nsec;
 
 //document.getElementById('clockbox').innerHTML=" "+tday[nday]+", "+tmonth[nmonth]+" "+ndate+", "+nyear+" "+nhour+":"+nmin+":"+nsec+ap+"";
-document.getElementById('clockbox').innerHTML="<ul id='mytimelist' data-role='listview' data-inset='true'>"+"<li>"+"<center><h2>"+nhour+":"+nmin+":"+nsec+ap+"</h2>"+"<span>"+tday[nday]+", "+tmonth[nmonth]+" "+ndate+", "+nyear+"</span></center></li></ul>"+"<hr/>";
+document.getElementById('clockbox').innerHTML="<ul id='mytimelist' data-role='listview' data-inset='true'>"+"<li>"+"<center><span>PHILIPPINE STANDARD TIME</span><h1>"+nhour+":"+nmin+":"+nsec+ap+"</h1>"+"<span>"+tday[nday]+", "+tmonth[nmonth]+" "+ndate+", "+nyear+"</span></center></li></ul>"+"<hr/>";
 }
 
 window.onload=function(){
@@ -167,18 +249,61 @@ setInterval(GetClock,1000);
 			
 		
 		<div data-role="collapsible" data-inset="false" data-iconpos="right" data-theme="g">
-			<h3 style="font-color: black;">General Weather</h3>
+			<h3>General Weather</h3>
 			<ul data-role="listview" data-theme="c">
 			
-			<li data-theme="g" >
+			<li data-theme="c" >
 			<a href="#mainPage" >Daily</a>
 			</li>
-			<li data-theme="g" >
-			<a href="#popupUnderConstruction2" data-rel="popup" data-position-to="window" data-transition="slidedown" data-theme="d">Key Cities</a>
+			<li data-theme="c" >
+			<a href="#" data-rel="popup">Key Cities</a>
 			</li>
-			<li data-theme="g" >
-			<a href="#popupUnderConstruction2" data-rel="popup" data-position-to="window" data-transition="slidedown" data-theme="d">Post Monitoring</a>
+			<li data-theme="c" >
+			<a href="#" >Tourist</a>
 			</li>
+			<li data-theme="c" >
+			<a href="#" >Local Cities</a>
+			</li>
+			<li data-theme="c" >
+			<a href="#" >Asian Cities</a>
+			</li>
+			<li data-theme="c" >
+			<a href="#" >Weekly Outlook</a>
+			</li>
+			</ul>
+		</div>
+		
+		<div data-role="collapsible" data-inset="false" data-iconpos="right" data-theme="g">
+			<h3 style="font-color: black;">Flood Information</h3>
+			<ul data-role="listview" data-theme="c">
+			
+			<li data-theme="c" >
+			<a href="#mainPage" >Advisories</a>
+			</li>
+			<li data-theme="c" >
+			<a href="#" data-rel="popup">Bulletin</a>
+			</li>
+			<li data-theme="c" >
+			<a href="#" >Dam Status</a>
+			</li>
+			
+			</ul>
+		</div>
+		
+		<div data-role="collapsible" data-inset="false" data-iconpos="right" data-theme="g">
+			<h3 style="font-color: black;">Weather Images</h3>
+			<ul data-role="listview" data-theme="c">
+			
+			<li data-theme="c" >
+			<a href="#mainPage" >Satellite</a>
+			</li>
+			<li data-theme="c" >
+			<a href="#" data-rel="popup">Radar</a>
+			</li>
+			<li data-theme="c" >
+			<a href="#" >Surface Map</a>
+			</li>
+			
 			</ul>
 		</div>
 		
@@ -194,6 +319,7 @@ setInterval(GetClock,1000);
 
 		<div data-role="main" class="ui-content" data-theme="g">
 			<div id="clockbox"></div>
+			<p class="microsoft marquee"><span style="font-size: 1.5em;">This is an important news bulletin. A typhoon is headed in the PAR</span></p>
 			<div id="tweecool"></div>
 		</div>
 
