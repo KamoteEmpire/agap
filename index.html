@@ -1,0 +1,213 @@
+﻿<!DOCUMENT html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="css/pagasatheme.min.css" />
+	<link rel="stylesheet" href="css/jqm145.css" />
+	
+<style type="text/css">
+#tweecool ul {
+margin: 0;
+padding: 0;
+list-style: none;
+
+}
+.twitter-widget li {
+list-style: none;
+clear: both;
+}
+#tweecool li img, .twitter-widget li .tweets_txt {
+float: left;
+margin-bottom: 10px;
+}
+#tweecool li img {
+-webkit-border-radius: 30px;
+-moz-border-radius: 30px;
+border-radius: 30px;
+}
+.twitter-widget li .tweets_txt {
+width: 350px;
+margin-left: 10px;
+
+}
+#tweecool li .tweets_txt span {
+font-style: italic;
+color: #666;
+display: block;
+
+}
+
+ul{
+list-style: none;
+margin: 0;
+padding: 0;
+
+
+}
+
+#tweecool ul li{
+	margin: 10px 0;
+	background-color: #91ffff;
+}
+
+#clockbox ul li{
+	background: url(images/phflag.png) no-repeat left top;
+	background-size: 25% 100%;
+	padding: 0px 0px 0px 0px;
+	margin: 0 0;
+	color: white;
+	background-color: #08a4a7;
+}
+#clockbox h1{
+	margin-bottom: 0em;
+}
+  </style>
+
+	<script src="js/jq214.js"></script>
+	<script src="js/jqm145.js"></script>
+	
+	<script src="js/tweecool.min.js"></script>
+  <script>
+$(document).ready(function() {
+
+$('#tweecool').tweecool({
+// Your twitter username
+username : 'dost_pagasa',
+
+// Number of tweets to show
+limit : 5, 
+
+// Show profile image
+profile_image : true, 
+
+// Show tweet time
+show_time : true, 
+
+// Show media
+show_media : true,
+
+//values: small, large, thumb, medium 
+show_media_size: 'thumb'
+});
+});
+</script>
+<script>
+
+tday=new Array("Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday");
+tmonth=new Array("January","February","March","April","May","June","July","August","September","October","November","December");
+
+function GetClock(){
+var d=new Date();
+var nday=d.getDay(),nmonth=d.getMonth(),ndate=d.getDate(),nyear=d.getYear();
+if(nyear<1000) nyear+=1900;
+var nhour=d.getHours(),nmin=d.getMinutes(),nsec=d.getSeconds(),ap;
+
+if(nhour==0){ap=" AM";nhour=12;}
+else if(nhour<12){ap=" AM";}
+else if(nhour==12){ap=" PM";}
+else if(nhour>12){ap=" PM";nhour-=12;}
+
+if(nmin<=9) nmin="0"+nmin;
+if(nsec<=9) nsec="0"+nsec;
+
+//document.getElementById('clockbox').innerHTML=" "+tday[nday]+", "+tmonth[nmonth]+" "+ndate+", "+nyear+" "+nhour+":"+nmin+":"+nsec+ap+"";
+document.getElementById('clockbox').innerHTML="<ul id='mytimelist' data-role='listview' data-inset='true'>"+"<li>"+"<center><h2>"+nhour+":"+nmin+":"+nsec+ap+"</h2>"+"<span>"+tday[nday]+", "+tmonth[nmonth]+" "+ndate+", "+nyear+"</span></center></li></ul>"+"<hr/>";
+}
+
+window.onload=function(){
+GetClock();
+setInterval(GetClock,1000);
+}
+
+
+
+</script>
+
+</head>
+
+<body>
+	<!-- Homepage -->
+	<div data-role="page" id="homepage" data-theme="g">
+
+		<!-- Panel -->
+		<div data-role="panel" id="panelcontent" data-display="overlay" data-position-fixed="true" data-theme="c">
+			<!--<p><strong>Social Media</strong></p><hr />
+			<p><a href="#" style="text-decoration: none; color:black; font-weight: normal ">
+				<img src="css/images/icons-png/tag-black.png" alt="" />&nbsp; Facebook</a></p>
+			<p><a href="#" style="text-decoration: none; color:black; font-weight: normal ">
+				<img src="css/images/icons-png/tag-black.png" alt="" />&nbsp; Instagram</a></p><hr />
+			
+			<p><strong>Twitter Feeds</strong></p><hr />
+			<p><a href="#" style="text-decoration: none; color:black; font-weight: normal ">
+				<img src="css/images/icons-png/tag-black.png" alt="" />&nbsp; DOLE</a></p>
+			<p><a href="#" style="text-decoration: none; color:black; font-weight: normal ">
+				<img src="css/images/icons-png/tag-black.png" alt="" />&nbsp; POEA</a></p>
+			<p><a href="#" style="text-decoration: none; color:black; font-weight: normal ">
+				<img src="css/images/icons-png/tag-black.png" alt="" />&nbsp; Jobstreet</a></p><hr />
+
+			<p><strong>Social Media</strong></p><hr />
+			<p><a href="#" style="text-decoration: none; color:black; font-weight: normal ">
+				<img src="css/images/icons-png/tag-black.png" alt="" />&nbsp; Twitter</a></p>
+			<p><a href="#" style="text-decoration: none; color:black; font-weight: normal ">
+				<img src="css/images/icons-png/tag-black.png" alt="" />&nbsp; Facebook</a></p>
+			<p><a href="#" style="text-decoration: none; color:black; font-weight: normal ">
+				<img src="css/images/icons-png/tag-black.png" alt="" />&nbsp; Instagram</a></p><hr />
+			
+			<p><a href="#" style="text-decoration: none; color:black; font-weight: normal ">
+				<img src="css/images/icons-png/delete-black.png" alt="" />&nbsp; Exit</a></p><hr />-->
+		<ul data-role="listview" data-theme="c">
+			<li>
+			<img src="images/icon.png"/>
+			<h2>PAGASA</h2>
+			<p>"tracking the sky...</p> 
+			<p style="float: right;">helping the country"</p>
+			</li>
+		</ul>
+			
+			
+		
+		<div data-role="collapsible" data-inset="false" data-iconpos="right" data-theme="g">
+			<h3 style="font-color: black;">General Weather</h3>
+			<ul data-role="listview" data-theme="c">
+			
+			<li data-theme="g" >
+			<a href="#mainPage" >Daily</a>
+			</li>
+			<li data-theme="g" >
+			<a href="#popupUnderConstruction2" data-rel="popup" data-position-to="window" data-transition="slidedown" data-theme="d">Key Cities</a>
+			</li>
+			<li data-theme="g" >
+			<a href="#popupUnderConstruction2" data-rel="popup" data-position-to="window" data-transition="slidedown" data-theme="d">Post Monitoring</a>
+			</li>
+			</ul>
+		</div>
+		
+
+
+		</div>
+		<!-- End of Panel -->
+
+		<div data-role="header" data-position="fixed" data-theme="g">
+			<a href="#panelcontent" class="ui-btn ui-icon-bars ui-btn-icon-notext ui-corner-all" >Summary</a>
+			<h1></h1>
+		</div>
+
+		<div data-role="main" class="ui-content" data-theme="g">
+			<div id="clockbox"></div>
+			<div id="tweecool"></div>
+		</div>
+
+		<div data-role="footer" data-position="fixed" data-theme="g">
+			<div data-role="navbar">
+				<ul>
+					<li><a href="#panelcontent" data-icon="arrow-l" data-transition="none"></a></li>
+					<li><a href="#" data-icon="location" data-transition="none"></a></li>
+					<li><a href="#" data-icon="camera" data-transition="none"></a></li>
+					<li><a href="#" data-icon="info" data-transition="none"></a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>
